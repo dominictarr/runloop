@@ -35,5 +35,7 @@ restartd () {
   nohup restart "$@" &
 }
 
-
+help () {
+  cat README.md
+}
 "$@"

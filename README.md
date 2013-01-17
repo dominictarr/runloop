@@ -2,11 +2,12 @@
 
 start a program, restart if it crashes, and cleanup any child processes
 
-== usage
+## usage
 ```
 runloop start COMMAND  # start COMMAND
 runloop stop           # stop COMMAND (run in this dir)
 runloop restart        # stop, then start again
+runloop help           # display the readme
 ```
 
 `runloop` with save two files in the local dir,
