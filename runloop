@@ -1,0 +1,39 @@
+#!/bin/bash
+
+start () {
+  echo "$@" > .runloop-command
+  run `cat .runloop-command`
+}
+
+run () {
+  echo $$ > .runloop-pid
+  echo START "$@" AS $$ ON `date`
+  while true; do
+    "$@"
+    sleep 1
+    test -e .runloop-pid || exit 0
+    echo restarting...
+  done
+}
+
+stop () {
+  test -e .runloop-pid || exit 1
+  ./killtree `cat .runloop-pid`
+  rm .runloop-pid
+}
+
+restart () {
+  stop
+  run `cat .runloop-command`
+}
+
+startd () {
+  nohup start "$@" &
+}
+
+restartd () {
+  nohup restart "$@" &
+}
+
+
+"$@"

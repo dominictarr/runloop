@@ -1,0 +1,14 @@
+#!/usr/bin/env node
+
+var pstree = require('ps-tree')
+var spawn  = require('child_process').spawn
+
+pstree(process.argv[2], function (err, pids) {
+  var a 
+    a = pids.map(function (e) {
+      return e.PID
+    })
+  if(!a.length)
+    return console.error('no child processes')
+  spawn('kill', ['-9'].concat(a))
+})

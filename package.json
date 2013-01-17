@@ -1,0 +1,19 @@
+{
+  "name": "runloop",
+  "version": "0.0.0",
+  "homepage": "https://github.com/dominictarr/runloop",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/dominictarr/runloop.git"
+  },
+  "dependencies": {
+    "ps-tree": "0.0.3"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "set -e; for t in test/*.js; do node $t; done"
+  },
+  "bin": "./runloop",
+  "author": "Dominic Tarr <dominic.tarr@gmail.com> (http://dominictarr.com)",
+  "license": "MIT"
+}
