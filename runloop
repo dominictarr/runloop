@@ -1,5 +1,7 @@
 #!/bin/bash
 
+DIR=$(cd $(dirname "$0"); pwd -P)
+
 start () {
   echo "$@" > .runloop-command
   run `cat .runloop-command`
@@ -18,7 +20,7 @@ run () {
 
 stop () {
   test -e .runloop-pid || exit 1
-  ./killtree `cat .runloop-pid`
+  $DIR/killtree `cat .runloop-pid`
   rm .runloop-pid
 }
 
@@ -38,4 +40,5 @@ restartd () {
 help () {
   cat README.md
 }
+
 "$@"
